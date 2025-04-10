@@ -1,12 +1,19 @@
-import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router';
 
-const RemoteComponent = React.lazy(() => import('app2/RemoteComponent'));
+import { HomePage } from './HomePage';
+import { MainPage } from './MainPage';
 
+
+
+// Главный компонент приложения с маршрутизацией
 const App = () => {
   return (
-    <React.Suspense fallback={<div>Loading remote component...</div>}>
-      <RemoteComponent />
-    </React.Suspense>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/mf/main" element={<MainPage />} />
+      </Routes>
+    </Router>
   );
 };
 
